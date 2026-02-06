@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from "@playwright/test"
+import { expect, Locator, Page, test } from "@playwright/test"
 
 export class CreateProjectForm {
 
@@ -25,13 +25,60 @@ export class CreateProjectForm {
     }
 
     async createProjectWithNameOnly(name: string) {
-        await this.nameTB.pressSequentially(name, {delay:100})
+        await this.nameTB.pressSequentially(name, { delay: 100 })
         await this.createBtn.click()
         await expect(this.creationSuccessAlert).toContainText('Successful creation.')
     }
 
-    async createProjectWithOptionalFields() {
+    async createProjWithOptionalFields(projData: ProjectCreationFields) {
+        await this.nameTB.pressSequentially(projData.ProjectName, { delay: 100 })
+        if (projData.Description) {
+            await this.descTB.fill(projData.Description)
+        }
+        if (projData.MarkPublic) {
+            if (projData.MarkPublic === "false") {
+                await this.markPublicCB.check()
+            }
+        }
+        if (projData.Identifier) {
+            await this.identifierTB.clear()
+            await this.identifierTB.fill(projData.Identifier)
+        }
+        if (projData.SubProjectOf) {
+            switch (projData.SubProjectOf) {
+                case "DocID":
+                    await this.subProjOfDD.selectOption({ label: projData.SubProjectOf })
+                    break;
+                default:
+                    test.info().annotations.push({
+                        type: 'Warning',
+                        description: `SubOfProject value "${projData.SubProjectOf}" is invalid. As this is an optional field, continuing with project creation.`
+                    })
+            }
 
+        }
+        await this.createBtn.click()
+        await expect(this.creationSuccessAlert).toContainText('Successful creation.')
     }
 
 }
+
+export interface ProjectCreationFields {
+    "ProjectName": string,
+    "Description"?: string,
+    "MarkPublic"?: string,
+    "Identifier"?: string,
+    "SubProjectOf"?: string
+}
+
+
+
+
+
+
+
+
+
+
+
+

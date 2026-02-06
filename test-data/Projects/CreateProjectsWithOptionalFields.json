@@ -1,0 +1,17 @@
+{
+	"Projects": [
+		{
+			"ProjectName": "Vendors1",
+			"Description": "Vendors Records",
+			"MarkPublic": "true",
+			"SubProjectOf": "DocID"
+		},
+		{
+			"ProjectName": "Accounts",
+			"Description": "Accounts Records",
+			"MarkPublic": "false",
+			"Identifier": "acc",
+			"SubProjectOf": "DocID1"
+		}
+	]
+}
