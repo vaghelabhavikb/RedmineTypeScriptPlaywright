@@ -46,6 +46,8 @@ export default defineConfig({
 
     // 4. Navigation Timeout: Timeout for page.goto(), waitForLoadState() (default: 0 / no limit)
     navigationTimeout: 90 * 1000,
+
+    testIdAttribute: 'id'
   },
 
   /* Configure projects for major browsers */
