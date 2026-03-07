@@ -1,6 +1,6 @@
 import { Locator, Page } from "@playwright/test"
 
-export class CreateIssueform {
+export class CreateIssueForm {
     private page: Page
     private trackerCB: Locator
     private subjectTB: Locator
