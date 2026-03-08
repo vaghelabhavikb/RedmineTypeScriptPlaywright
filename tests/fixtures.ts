@@ -27,6 +27,9 @@ export const test = base.extend<AllFixtures>({
     createIssueForm: async ({ page }, use) => { await use(new CreateIssueForm(page)) },
     createProjectForm: async ({ page }, use) => { await use(new CreateProjectForm(page)) },
     projectIssues: async ({ page }, use) => { await use(new ProjectIssues(page)) },
-    landingPage: async ({ page }, use) => { await use(new LandingPage(page)) },
+    landingPage: async ({ page }, use) => {
+        await page.goto('')
+        await use(new LandingPage(page))
+    },
     projectsQueryPage: async ({ page }, use) => { await use(new ProjectsQueryPage(page)) },
 })
