@@ -8,8 +8,7 @@ import { IssueCreationFields } from '../pom/create-issue-form'
 
 test.describe('Projects tests', () => {
 
-    test.beforeEach(async ({ landingPage, page }) => {
-        await page.goto('')
+    test.beforeEach(async ({ landingPage }) => {
         await landingPage.navToProjectsModule()
     })
 
