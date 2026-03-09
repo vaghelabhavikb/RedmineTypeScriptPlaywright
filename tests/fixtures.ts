@@ -1,5 +1,7 @@
+import { AdminPage } from '../pom/admin-page';
 import { CreateIssueForm } from '../pom/create-issue-form';
 import { CreateProjectForm } from '../pom/create-project-form';
+import { CreateUserForm } from '../pom/create-user-form';
 import { IssueInfo } from '../pom/issue-info';
 import { LandingPage } from '../pom/landing-page';
 import { LoginPage } from '../pom/login-page';
@@ -8,6 +10,7 @@ import { ProjectPage } from '../pom/project-page';
 import { ProjectsQueryPage } from '../pom/projects-query-page';
 
 import { test as base } from '@playwright/test';
+import { UsersQueryPage } from '../pom/users-query-page';
 
 type AllFixtures = {
     loginPage: LoginPage,
@@ -18,6 +21,9 @@ type AllFixtures = {
     projectIssues: ProjectIssues,
     landingPage: LandingPage,
     projectsQueryPage: ProjectsQueryPage,
+    adminPage: AdminPage,
+    usersQueryPage: UsersQueryPage,
+    createUserForm: CreateUserForm
 }
 
 export const test = base.extend<AllFixtures>({
@@ -32,4 +38,7 @@ export const test = base.extend<AllFixtures>({
         await use(new LandingPage(page))
     },
     projectsQueryPage: async ({ page }, use) => { await use(new ProjectsQueryPage(page)) },
+    adminPage: async ({ page }, use) => { await use(new AdminPage(page)) },
+    usersQueryPage: async ({ page }, use) => { await use(new UsersQueryPage(page)) },
+    createUserForm: async ({ page }, use) => { await use(new CreateUserForm(page)) }
 })
