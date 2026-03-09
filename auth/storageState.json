@@ -1,0 +1,15 @@
+{
+  "cookies": [
+    {
+      "name": "_redmine_session",
+      "value": "NUV5YTZFcDd2bnBrU1VHNlIzUWhZMVZHQzQvYmxoV2E5c0xyRjlNbXlYZ2toai9xdkdBdWlGd3A0cTdKa0V0S2pXSFFSSlNabmQxM09FcEVUL0tnUjBiRGtDb1M5MG1kVzVwVlp2V2hpeHhJR09MYlZvRjVRa0hLTFdrZVJsVVF1RGZKVWkxcXcxOGswSkFzeWV2OXhCOUpGSkYzR2FDUW5EVDZoQnN4REZxTlhpYVVLYTBDMmdINGdPOFNocUE2eHRqdWNtdTJiT2E1cUJHeHg1L2N2TlFibWc2T252TzRQTFV0RkVTeDljWmJ1bHVIZTlIU3pjNTBHZkVPUUw4TmJsVWpVODd1MjkvUmtiRmxLZTlWQm5vczNueG1jRXNXNmpFVGhocWpnRjJhaGtxMk5nR0RRaFdZNWs1dzdSQWMtLStoMG00YXNtZ2NqeG16cWYyM2VVUWc9PQ%3D%3D--ca364907a682939abde6ba065e8eff40ffdc2bc1",
+      "domain": "localhost",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}
