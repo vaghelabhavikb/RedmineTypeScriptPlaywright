@@ -13,7 +13,6 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
     globalSetup: require.resolve('./tests/global.setup'),
-
     // 1. Total Test Timeout: Time allowed for a single test to run (default: 30s)
     timeout: 120 * 1000,
 
@@ -29,14 +28,14 @@ export default defineConfig({
     /* Retry on CI only */
     retries: process.env.CI ? 2 : 0,
     /* Opt out of parallel tests on CI. */
-    workers: process.env.CI ? 1 : 1,
+    workers: process.env.CI ? 1 : 2,
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: 'html',
     /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
     use: {
-        storageState: './auth/storageState.json',
-        /* Base URL to use in actions like `await page.goto('')`. */
-        baseURL: 'http://localhost:3000',
+        // storageState: './auth/storageState.json',
+        // /* Base URL to use in actions like `await page.goto('')`. */
+        // baseURL: 'http://localhost:3000',
 
         /* See https://playwright.dev/docs/trace-viewer */
         trace: 'retain-on-failure',
@@ -56,6 +55,8 @@ export default defineConfig({
             name: 'chromium',
             use: {
                 channel: 'chrome', // This uses the real Chrome browser installed on your machine
+                baseURL: 'http://localhost:3000',
+                storageState: './auth/storageState.json',
                 viewport: null,
                 launchOptions: {
                     args: ['--start-maximized']
@@ -63,7 +64,19 @@ export default defineConfig({
                 ignoreHTTPSErrors: true
             }
         },
-
+        {
+            name: 'edge',
+            use: {
+                channel: 'msedge', // This uses the real Edge browser installed on your machine
+                baseURL: 'http://localhost:3001',
+                storageState: './auth/edge-storageState.json',
+                viewport: null,
+                launchOptions: {
+                    args: ['--start-maximized']
+                },
+                ignoreHTTPSErrors: true
+            }
+        },
         // {
         //   name: 'firefox',
         //   use: { ...devices['Desktop Firefox'] },
